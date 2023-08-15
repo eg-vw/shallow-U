@@ -1,22 +1,24 @@
+%training code
+
 %for data augmentation
 targetSize = [256 256];
 
-%to construct the pixelLabelDatastore; ignoring other class values
+%to construct the pixelLabelDatastore ignoring other class values
 classes = ["flower","background"];
 labelIDs = [1,3];
 
 %test and train split prior to reading in
-images = fullfile('C:\Users\Shadow\Documents\MATLAB\daffodilSegNew\train\ImagesRsz256');
-labels = fullfile('C:\Users\Shadow\Documents\MATLAB\daffodilSegNew\train\LabelsRsz256');
-tImages = fullfile('C:\Users\Shadow\Documents\MATLAB\daffodilSegNew\test\images')
-tLabels = fullfile('C:\Users\Shadow\Documents\MATLAB\daffodilSegNew\test\labels')
+images = fullfile('C:\);
+labels = fullfile('C:\');
+tImages = fullfile('C:\');
+tLabels = fullfile('C:\');
 
 %converting to datastores
 testImages = imageDatastore(tImages);
 testLabels = pixelLabelDatastore(tLabels,classes,labelIDs);
 testSet = combine(testImages,testLabels);
 
-%replicating training images, converting, combining
+%replicating training images x3, converting, combining
 numObservations = 3;
 trainImages = repelem({images},numObservations,1);
 trainLabels = repelem({labels},numObservations,1);
